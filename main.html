@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adamya Singh | Web Apps & Automation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 28px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      padding: 95px 0 75px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: 1.12rem;
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      display: inline-block;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #082f49;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #7dd3fc;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #f8fafc;
+    }
+
+    .btn-secondary:hover {
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 18px;
+      font-size: 1.3rem;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      margin: 6px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #dbeafe;
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: #94a3b8;
+      max-width: 650px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 24px;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56,189,248,0.55);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+    }
+
+    .project-card {
+      grid-column: span 1;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card .tag {
+      color: #7dd3fc;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tech {
+      margin-top: 18px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      background: #38bdf8;
+      color: #082f49;
+      border-radius: 50%;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(56,189,248,0.14), rgba(59,130,246,0.08));
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+      }
+
+      .grid, .process {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Adamya Singh</div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <span class="badge">Web Apps • Automation • Dashboards</span>
+        <h1>I build simple digital tools that save time and make work easier.</h1>
+        <p>
+          I create custom websites, dashboards, and automation systems for small businesses, creators, and teams that need clean, practical technology without overcomplication.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#contact">Start a Project</a>
+          <a class="btn btn-secondary" href="#projects">View Projects</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>What I can build</h3>
+        <span class="skill-pill">Business Websites</span>
+        <span class="skill-pill">Custom Web Apps</span>
+        <span class="skill-pill">Python Automation</span>
+        <span class="skill-pill">Data Dashboards</span>
+        <span class="skill-pill">API Integrations</span>
+        <span class="skill-pill">Web Scrapers</span>
+        <span class="skill-pill">Reporting Tools</span>
+        <span class="skill-pill">Flask Apps</span>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Services</h2>
+          <p>Focused services for clients who need useful software, not bloated systems.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Websites</h3>
+            <p>Modern, responsive websites for businesses, nonprofits, personal brands, and service providers.</p>
+          </div>
+          <div class="card">
+            <h3>Web Apps</h3>
+            <p>Custom tools with forms, dashboards, user flows, and features tailored to your workflow.</p>
+          </div>
+          <div class="card">
+            <h3>Automation Systems</h3>
+            <p>Python scripts and API integrations that remove repetitive work and generate useful reports.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Featured Projects</h2>
+          <p>Past work showing experience with full-stack apps, automation, data, and real-time systems.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card project-card">
+            <div>
+              <span class="tag">AI Sports Analytics</span>
+              <h3>SmartPlay</h3>
+              <p>An AI-powered sports performance platform that analyzes video, tracks metrics, and gives athletes clearer training insights.</p>
+            </div>
+            <p class="tech">SwiftUI • Flask • Python • Computer Vision • Charts</p>
+          </div>
+
+          <div class="card project-card">
+            <div>
+              <span class="tag">Automation + Alerts</span>
+              <h3>News Monitoring System</h3>
+              <p>A system that collects market news, scores important updates, logs results, and sends organized alerts through connected tools.</p>
+            </div>
+            <p class="tech">Python • APIs • Discord Webhooks • Google Sheets</p>
+          </div>
+
+          <div class="card project-card">
+            <div>
+              <span class="tag">IoT Dashboard</span>
+              <h3>Live Sensor Dashboard</h3>
+              <p>A Raspberry Pi project that sends live sensor readings to a web interface for real-time monitoring and display.</p>
+            </div>
+            <p class="tech">Raspberry Pi • Flask • Sensors • HTML/CSS</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How I Work</h2>
+          <p>A simple process designed to keep projects clear, fast, and useful.</p>
+        </div>
+
+        <div class="process">
+          <div class="card step">
+            <h3>Understand</h3>
+            <p>We define the exact problem, goal, and features needed.</p>
+          </div>
+          <div class="card step">
+            <h3>Plan</h3>
+            <p>I map the workflow and choose the simplest tools for the job.</p>
+          </div>
+          <div class="card step">
+            <h3>Build</h3>
+            <p>I create the website, app, dashboard, or automation system.</p>
+          </div>
+          <div class="card step">
+            <h3>Deliver</h3>
+            <p>You get the finished product, instructions, and support for setup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <h2>Need a website, dashboard, or automation tool?</h2>
+        <p>
+          Send me your idea and I’ll help turn it into a clean, practical digital system.
+        </p>
+        <a class="btn btn-primary" href="mailto:your-email@example.com">Contact Me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Adamya Singh. Web apps, websites, dashboards, and automation systems.
+    </div>
+  </footer>
+</body>
+</html>
